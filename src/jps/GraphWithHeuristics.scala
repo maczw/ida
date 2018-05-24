@@ -1,12 +1,11 @@
 package jps
 
-
 import scala.collection.immutable.Map
 import scala.collection.immutable.List
 import scala.collection.immutable.Vector
 
 
-object Graph {
+object GraphWithHeuristics {
   case class Node(key:Int)
   val nodes: Vector[Node] =
     Vector(
@@ -37,8 +36,30 @@ object Graph {
 
   val heuristicsMap: Map[Node,Int] = (nodes zip heuristics).toMap
 
+  val firstNode: Node = nodes.head
+  val lastNode: Node = nodes.last
+  val startLimit: Option[Int] = heuristicsMap.get(firstNode)
 
-  def main(args: Array[String]){
-    println(neighborsMap)
+  //returns path from start to the end and total cost
+  def idaStar(): (List[Node],Int) = {
+    deepen(startLimit)
+  }
+
+  def deepen(limit: Option[Int] ): (List[Node],Int) = {
+    iteration(List(nodes(0)), 0, limit)
+  }
+
+  def iteration(nodes: List[Node], cost: Int, limit: Option[Int]): (List[Node],Int) = {
+    val first = nodes.head
+    first match {
+      case `lastNode` => (List(first),cost)
+      case _ => {
+        val neighbors = neighborsMap.getOrElse(first,List()).unzip._1 //lista samych sasiadow
+        val newNodes = neighbors :: nodes
+
+        //temporary
+        (List(first),cost)
+    }
+    }
   }
 }
