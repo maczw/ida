@@ -51,7 +51,7 @@ object GraphWithHeuristics {
   }
 
   def deepen(limit: Option[Int]): (List[Node], Int) = {
-    iteration(firstNode, List(), 0, limit)
+    iteration(firstNode, List(nodes(1)), 0, limit)
     //iteration(None, List(), 0, limit)
   }
 
@@ -61,12 +61,11 @@ object GraphWithHeuristics {
       case `lastNode` => (List(first.get), cost)
       //case None => (List(), 0)
       case _ => {
-
           val neighbors: List[Node] = neighborsMap.getOrElse(first.get, Map()).keySet.toList //lista samych sasiadow
-          //println(neighbors)
-          //println(nodes.tail)
+          println(nodes)
+          println(neighbors)
           val newNodes: List[Node] = neighbors.filter(x => !nodes.exists(y => y == x)) ::: nodes
-          //println(newNodes)
+          println(newNodes)
           val head: Option[Node] = newNodes.headOption
 
           val updatedCost: Int = cost + neighborsMap.getOrElse(first.get, Map()).getOrElse(head.get,0)
