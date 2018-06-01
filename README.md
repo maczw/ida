@@ -5,4 +5,5 @@ Implementation of IDA* algorithm + simple graph structure that keeps information
 ## Getting Started
 
 Program arguments:
+
   path - path to directory where graph files are located
