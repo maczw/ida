@@ -54,33 +54,6 @@ class GraphWithHeuristics(val path: String) {
     */
   case class Node(key: Int)
 
-  //  val nodes: Vector[Node] =
-  //    Vector(
-  //      Node(0),
-  //      Node(1),
-  //      Node(2),
-  //      Node(3),
-  //      Node(4)
-  //    )
-
-  //  val neighborsMap: Map[Node, Map[Node, Int] ] =
-  //    Map(
-  //      nodes(0) -> Map(nodes(1) -> 69, nodes(3) -> 135),
-  //      nodes(1) -> Map(nodes(0)-> 69, nodes(2)-> 75),
-  //      nodes(2) -> Map(nodes(1)-> 75, nodes(3)-> 165),
-  //      nodes(3) -> Map(nodes(0)-> 135, nodes(2)-> 165, nodes(4)-> 80),
-  //      nodes(4) -> Map(nodes(2)-> 180, nodes(3)-> 80)
-  //    )
-
-  //  val heuristics: List[Int] =
-  //    List(
-  //      200,
-  //      247,
-  //      162,
-  //      72,
-  //      0
-  //    )
-
   /**
     * vector of nodes read from file
     */
